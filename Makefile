@@ -17,7 +17,7 @@ CFLAGS = -O2 -I$(BOOST)include/
 CPPFLAGS      = $(CFLAGS)
 CC            = $(CPP)
 CLSLIB  = 
-OBJ       =  main.o
+OBJ       =  stock.o main.o 
 
 default: quant
 all: quant
