@@ -7,7 +7,6 @@
  **
  *********************************************************************/
 
-//
 // Include Standard Template libraries routines.
 #include <boost/tokenizer.hpp>
 #include <iostream>
@@ -24,10 +23,6 @@ using std::ios;
 Stock::Stock(std::string n, size_t m) : open(m), close(m), high(m), low(m), volume(m), adjclose(m)
 {
    name = n;
-   open(0) = 5.0;
-   close(0) = 2.0;
-   high(0) = 4.0;
-   low(0) = 6.0;
 }
 
 void Stock::load_stock_csv(std::string filename)
@@ -37,7 +32,6 @@ void Stock::load_stock_csv(std::string filename)
 
     // Load in values.
     if (file) {
-        cout << "\nLoading in values from csv file." << endl;
         typedef boost::tokenizer< boost::char_separator<char> > Tokenizer;
         boost::char_separator<char> sep(",");
         string line;
@@ -62,7 +56,6 @@ void Stock::load_stock_csv(std::string filename)
     }
     else {
         cerr << "Error: Unable to open file " << filename << endl;
-        //return -1;
     }
 
     // display results
