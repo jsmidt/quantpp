@@ -15,13 +15,14 @@ public:
     Stock(std::string n, size_t m);
     size_t size();
     const std::string get_name() { return name; }
+    std::vector<std::string> date;
     vector<double> open;
     vector<double> high;
     vector<double> low;
     vector<double> close;
     vector<double> volume;
-    vector<double> other;
-    void load_stock_csv(char* filename);
+    vector<double> adjclose;
+    void load_stock_csv(std::string filename);
     ~Stock();
 };
 

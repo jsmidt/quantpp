@@ -35,7 +35,7 @@ int main (int argc, char** argv) {
     // Print out loaded values.
     cout << "\nThis is what was loaded in:" << endl;
     for (int i = 0; i < 5; i++) {
-        cout << s.open(i) << " " << s.close(i) << " " << s.high(i) << " "
+        cout << s.date.at(i) << " " << s.open(i) << " " << s.close(i) << " " << s.high(i) << " "
              << s.low(i)  << " " << s.volume(i) << endl;
     }
 

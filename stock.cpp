@@ -21,7 +21,7 @@ using std::cerr;
 using std::fstream;
 using std::ios;
 
-Stock::Stock(std::string n, size_t m) : open(m), close(m), high(m), low(m), volume(m), other(m)
+Stock::Stock(std::string n, size_t m) : open(m), close(m), high(m), low(m), volume(m), adjclose(m)
 {
    name = n;
    open(0) = 5.0;
@@ -30,10 +30,10 @@ Stock::Stock(std::string n, size_t m) : open(m), close(m), high(m), low(m), volu
    low(0) = 6.0;
 }
 
-void Stock::load_stock_csv(char* filename)
+void Stock::load_stock_csv(std::string filename)
 {
     std::vector< std::vector<double> > csv_values;
-    fstream file(filename, ios::in);
+    fstream file(filename.c_str(), ios::in);
 
     // Load in values.
     if (file) {
@@ -42,15 +42,18 @@ void Stock::load_stock_csv(char* filename)
         boost::char_separator<char> sep(",");
         string line;
 
+        // Skip one line for header.
+        getline(file, line);
+
         while (getline(file, line)) {
             Tokenizer info(line, sep);   // tokenize the line of data
             std::vector<double> values;
 
             for (Tokenizer::iterator it = info.begin(); it != info.end(); ++it){
-                // convert data into double value, and store
-                // if(it == info.begin())
-                //    cout << *it[0] << endl;
-                values.push_back(strtod(it->c_str(), 0));
+                if (it == info.begin()) 
+                    this->date.push_back(*it);
+                else
+                    values.push_back(strtod(it->c_str(), 0));
             }
 
             // store array of values
@@ -68,12 +71,13 @@ void Stock::load_stock_csv(char* filename)
 
     // Load values into stock arrays. 
     for (size_t i = 0; i < csv_values.size(); i++) {
-        this->high(i)   = csv_values[i].at(0);
-        this->low(i)    = csv_values[i].at(1);
-        this->open(i)   = csv_values[i].at(2);
+        cout << csv_values[i].at(0) << endl;
+        this->open(i)   = csv_values[i].at(0);
+        this->high(i)    = csv_values[i].at(1);
+        this->low(i)   = csv_values[i].at(2);
         this->close(i)  = csv_values[i].at(3);
         this->volume(i) = csv_values[i].at(4);
-        this->other(i)  = csv_values[i].at(5);
+        this->adjclose(i)  = csv_values[i].at(5);
     }
 }
 
