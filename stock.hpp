@@ -21,7 +21,6 @@ public:
     vector<double> low;
     vector<double> close;
     vector<double> volume;
-    vector<double> adjclose;
     void load_stock_csv(std::string filename);
     ~Stock();
 };

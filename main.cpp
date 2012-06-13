@@ -14,6 +14,7 @@ using std::cout;
 using std::endl;
 using std::cerr;
 using std::fstream;
+using std::ofstream;
 using std::ios;
 
 int main (int argc, char** argv) {
@@ -38,13 +39,12 @@ int main (int argc, char** argv) {
     s.load_stock_csv(filename);
 
     // Print out loaded values.
-    cout << "\nThis is what was loaded in:" << endl;
-    for (size_t i = 0; i < 20; i++) {
-        cout << s.date.at(i) << " " << s.open(i) << " " << s.high(i) << " " 
-             << s.low(i) << " " << s.close(i)  << " " << s.volume(i) << " "
-             << s.adjclose(i) << endl;
+    ofstream out; out.open("output.txt");
+    cout << "\nWrite output to file." << endl;
+    for (size_t i = 0; i < s.date.size(); i++) {
+        out << s.date.at(i) << " " << s.open(i) << " " << s.high(i) << " " 
+             << s.low(i) << " " << s.close(i)  << " " << s.volume(i) << endl;
     }
-    cout << "Etc..." << endl;
 
    return 0;
 }

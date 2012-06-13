@@ -20,7 +20,7 @@ using std::cerr;
 using std::fstream;
 using std::ios;
 
-Stock::Stock(std::string n, size_t m) : open(m), close(m), high(m), low(m), volume(m), adjclose(m)
+Stock::Stock(std::string n, size_t m) : open(m), close(m), high(m), low(m), volume(m)
 {
    name = n;
 }
@@ -69,7 +69,6 @@ void Stock::load_stock_csv(std::string filename)
         this->low(i)   = csv_values[i].at(2);
         this->close(i)  = csv_values[i].at(3);
         this->volume(i) = csv_values[i].at(4);
-        this->adjclose(i)  = csv_values[i].at(5);
     }
 }
 
