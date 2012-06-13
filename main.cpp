@@ -1,30 +1,43 @@
-#include <boost/numeric/ublas/vector.hpp>
-#include <boost/numeric/ublas/io.hpp>
+/**********************************************************************
+ **
+ ** main.cpp - Main routine for Quant++.
+ **
+ ** Vesion history
+ **     v0.1 - Joseph Smidt.  Initial upload 
+ **
+ *********************************************************************/
+
+// Include Standard Template libraries routines. 
 #include "stock.hpp"
 using std::cout;
 using std::endl;
+using std::cerr;
 
-int main () {
-    using namespace boost::numeric::ublas;
-    vector<double> v (3);
+int main (int argc, char** argv) {
 
-    for (unsigned i = 0; i < v.size (); ++ i)
-        v (i) = i;
-    std::cout << v << std::endl;
-
+    // Create stock.
     Stock s("Test",10);
+
+    // Print stuff to make sure initalized correctly.
     std::cout << "Stock '" << s.get_name() << "' has " << s.size()
-                << " elements " << s.open(0) << " " << s.close(0) << " " << s.high(0) << " " << s.low(0) <<  std::endl;
+              << " elements " << s.open(0) << " " << s.close(0) << " " 
+              << s.high(0) << " " << s.low(0) <<  std::endl;
+    
+    // Make sure proper filename was given.
+    if (argc < 2) {
+        cerr << "Usage: " << argv[0] << " <csv file>" << endl;
+        return -1;
+    }
 
-    //for (int i = 0; i < 6; i++) {
-    //    cout << s.close(i) << endl;
-    //}
+    // Load in values from CSV file from Yahoo Finance.
+    s.load_stock_csv(argv[1]);
 
-    s.load_stock_csv("table.txt");
-
-    //for (int i = 0; i < 6; i++) {
-    //    cout << s.close(i) << endl;
-    //}
+    // Print out loaded values.
+    cout << "\nThis is what was loaded in:" << endl;
+    for (int i = 0; i < 5; i++) {
+        cout << s.open(i) << " " << s.close(i) << " " << s.high(i) << " "
+             << s.low(i)  << " " << s.volume(i) << endl;
+    }
 
    return 0;
 }
