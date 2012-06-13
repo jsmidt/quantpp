@@ -16,13 +16,8 @@ using std::cerr;
 int main (int argc, char** argv) {
 
     // Create stock.
-    Stock s("Test",10);
+    Stock s("Test",10043);
 
-    // Print stuff to make sure initalized correctly.
-    std::cout << "Stock '" << s.get_name() << "' has " << s.size()
-              << " elements " << s.open(0) << " " << s.close(0) << " " 
-              << s.high(0) << " " << s.low(0) <<  std::endl;
-    
     // Make sure proper filename was given.
     if (argc < 2) {
         cerr << "Usage: " << argv[0] << " <csv file>" << endl;
@@ -34,10 +29,12 @@ int main (int argc, char** argv) {
 
     // Print out loaded values.
     cout << "\nThis is what was loaded in:" << endl;
-    for (int i = 0; i < 5; i++) {
-        cout << s.date.at(i) << " " << s.open(i) << " " << s.close(i) << " " << s.high(i) << " "
-             << s.low(i)  << " " << s.volume(i) << endl;
+    for (size_t i = 0; i < 20; i++) {
+        cout << s.date.at(i) << " " << s.open(i) << " " << s.high(i) << " " 
+             << s.low(i) << " " << s.close(i)  << " " << s.volume(i) << " "
+             << s.adjclose(i) << endl;
     }
+    cout << "Etc..." << endl;
 
    return 0;
 }
