@@ -17,14 +17,13 @@
 #include <vector>
 using std::cout;
 using std::endl;
-using std::strcpy;
 using std::cerr;
 using std::fstream;
 using std::ios;
 
-Stock::Stock(char *n, size_t m) : open(m), close(m), high(m), low(m), volume(m), other(m)
+Stock::Stock(std::string n, size_t m) : open(m), close(m), high(m), low(m), volume(m), other(m)
 {
-   strcpy(name, n);
+   name = n;
    open(0) = 5.0;
    close(0) = 2.0;
    high(0) = 4.0;
@@ -68,7 +67,7 @@ void Stock::load_stock_csv(char* filename)
     cout.setf(ios::fixed,ios::floatfield);
 
     // Load values into stock arrays. 
-    for (int i = 0; i < csv_values.size(); i++) {
+    for (size_t i = 0; i < csv_values.size(); i++) {
         this->high(i)   = csv_values[i].at(0);
         this->low(i)    = csv_values[i].at(1);
         this->open(i)   = csv_values[i].at(2);

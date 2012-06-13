@@ -12,7 +12,7 @@ CFLAGS = -openmp -O2 -ip -W0 -WB -fpp2 -vec_report0 -I$(BOOST)include/
 
 #Gfortran compiler: if pre v4.3 add -D__GFORTRAN__
 CPP = g++
-CFLAGS = -O2 -I$(BOOST)include/  
+CFLAGS = -O2  -I$(BOOST)include/  
 
 CPPFLAGS      = $(CFLAGS)
 CC            = $(CPP)
