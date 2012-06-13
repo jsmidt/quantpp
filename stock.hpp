@@ -3,7 +3,9 @@
 
 #include <boost/numeric/ublas/vector.hpp>
 
+#include <string>
 using namespace boost::numeric::ublas;
+using std::string;
 
 class Stock
 {
@@ -18,6 +20,9 @@ public:
     vector<double> high;
     vector<double> low;
     vector<double> close;
+    vector<double> volume;
+    vector<double> other;
+    void load_stock_csv(char* filename);
     ~Stock();
 };
 
