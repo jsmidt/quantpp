@@ -1,4 +1,4 @@
-Quant++
+quant++
 ========
 
 A C++ quantitative trading framework. 
