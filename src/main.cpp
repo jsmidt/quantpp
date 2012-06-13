@@ -39,7 +39,7 @@ int main (int argc, char** argv) {
     s.load_stock_csv(filename);
 
     // Print out loaded values.
-    ofstream out; out.open("output.txt");
+    ofstream out; out.open("output/output.txt");
     cout << "\nWrite output to file." << endl;
     for (size_t i = 0; i < s.date.size(); i++) {
         out << s.date.at(i) << " " << s.open(i) << " " << s.high(i) << " " 
