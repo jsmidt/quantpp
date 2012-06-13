@@ -3,7 +3,7 @@
 
 #include <boost/numeric/ublas/vector.hpp>
 #include <string>
-using boost::numeric::ublas::vector;
+using namespace boost::numeric;
 
 class Stock {
 private:
@@ -14,11 +14,11 @@ public:
     size_t size();
     const std::string get_name() { return name; }
     std::vector<std::string> date;
-    vector<double> open;
-    vector<double> high;
-    vector<double> low;
-    vector<double> close;
-    vector<double> volume;
+    ublas::vector<double> open;
+    ublas::vector<double> high;
+    ublas::vector<double> low;
+    ublas::vector<double> close;
+    ublas::vector<double> volume;
     void load_stock_csv(std::string filename);
     ~Stock();
 };
