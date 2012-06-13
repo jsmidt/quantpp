@@ -3,11 +3,9 @@
 
 #include <boost/numeric/ublas/vector.hpp>
 #include <string>
-using namespace boost::numeric::ublas;
-using std::string;
+using boost::numeric::ublas::vector;
 
-class Stock
-{
+class Stock {
 private:
     std::string name;
 

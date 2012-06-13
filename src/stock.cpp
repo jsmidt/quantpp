@@ -20,12 +20,13 @@ using std::cerr;
 using std::fstream;
 using std::ios;
 
-Stock::Stock(std::string n, size_t m) : open(m), close(m), high(m), low(m), volume(m)
+Stock::Stock(std::string n, size_t m) : 
+    open(m), close(m), high(m), low(m), volume(m) 
 {
    name = n;
 }
 
-void Stock::load_stock_csv(std::string filename)
+void Stock::load_stock_csv(std::string filename) 
 {
     std::vector< std::vector<double> > csv_values;
     fstream file(filename.c_str(), ios::in);
@@ -34,7 +35,7 @@ void Stock::load_stock_csv(std::string filename)
     if (file) {
         typedef boost::tokenizer< boost::char_separator<char> > Tokenizer;
         boost::char_separator<char> sep(",");
-        string line;
+        std::string line;
 
         // Skip one line for header.
         getline(file, line);
@@ -72,12 +73,11 @@ void Stock::load_stock_csv(std::string filename)
     }
 }
 
-Stock::~Stock()
+Stock::~Stock() 
 {
     // Destructor
 }
 
-size_t Stock::size()
-{
+size_t Stock::size() {
     return open.size();
 }

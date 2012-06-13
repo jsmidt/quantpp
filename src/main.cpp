@@ -25,7 +25,7 @@ int main (int argc, char** argv) {
         return -1;
     }
 
-    string filename, line;
+    std::string filename, line;
     filename = argv[1];
 
     // Count lines in file.
