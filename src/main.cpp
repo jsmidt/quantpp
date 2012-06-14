@@ -48,6 +48,7 @@ int main (int argc, char** argv) {
     }
     out.close();
 
+    // Calculate moving averages and write to file.
     ublas::vector<double> w(s.close.size());
     size_t N = 50;
     sma(s.close,w,N);
@@ -56,11 +57,14 @@ int main (int argc, char** argv) {
     N = 200;
     sma(s.close,ww,N);
 
+    ublas::vector<double> www(s.close.size());
+    cma(s.close,www);
+
     out.open("output/sma.txt");
     cout << "\nWrite SMA to file." << endl;
     for (size_t i = 0; i < s.close.size(); i++)
     {
-        out << w(i) << " " << ww(i) << " " << s.close(i) << endl;
+        out << w(i) << " " << ww(i) << " " << www(i) << " " << s.close(i) << endl;
     }
 
    return 0;

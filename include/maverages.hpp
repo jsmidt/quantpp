@@ -14,6 +14,7 @@
 using namespace boost::numeric;
 
 void sma(ublas::vector<double>, ublas::vector<double>&, size_t);
+void cma(ublas::vector<double>, ublas::vector<double>&);
 
 
 

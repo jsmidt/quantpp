@@ -23,5 +23,16 @@ void sma(ublas::vector<double> v, ublas::vector<double> &w, size_t N)
     }
 }
 
+// Cumulative moving average.
+void cma(ublas::vector<double> v, ublas::vector<double> &w)
+{
+    for (size_t i =0; i < v.size(); i++) { 
+        ublas::vector_range<ublas::vector<double> > 
+                   vr(v,ublas::range(0, i+1));
+        w(i) = sum(vr)/vr.size();
+    }
+}
+
+
 
 
