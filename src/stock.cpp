@@ -65,11 +65,11 @@ void Stock::load_stock_csv(std::string filename)
 
     // Load values into stock arrays. 
     for (size_t i = 0; i < csv_values.size(); i++) {
-        this->open(i)   = csv_values[i].at(0);
-        this->high(i)    = csv_values[i].at(1);
-        this->low(i)   = csv_values[i].at(2);
-        this->close(i)  = csv_values[i].at(3);
-        this->volume(i) = csv_values[i].at(4);
+        this->open(i)   = csv_values[i][0];
+        this->high(i)   = csv_values[i][1];
+        this->low(i)    = csv_values[i][2];
+        this->close(i)  = csv_values[i][3];
+        this->volume(i) = csv_values[i][4];
     }
 }
 
