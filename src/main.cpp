@@ -9,6 +9,7 @@
 
 // Include Standard Template libraries routines. 
 #include "stock.hpp"
+#include "maverages.hpp"
 #include <fstream>
 using std::cout;
 using std::endl;
@@ -44,6 +45,22 @@ int main (int argc, char** argv) {
     for (size_t i = 0; i < s.date.size(); i++) {
         out << s.date.at(i) << " " << s.open(i) << " " << s.high(i) << " " 
              << s.low(i) << " " << s.close(i)  << " " << s.volume(i) << endl;
+    }
+    out.close();
+
+    ublas::vector<double> w(s.close.size());
+    size_t N = 50;
+    sma(s.close,w,N);
+
+    ublas::vector<double> ww(s.close.size());
+    N = 200;
+    sma(s.close,ww,N);
+
+    out.open("output/sma.txt");
+    cout << "\nWrite SMA to file." << endl;
+    for (size_t i = 0; i < s.close.size(); i++)
+    {
+        out << w(i) << " " << ww(i) << " " << s.close(i) << endl;
     }
 
    return 0;

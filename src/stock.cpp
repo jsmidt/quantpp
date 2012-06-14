@@ -78,6 +78,8 @@ Stock::~Stock()
     // Destructor
 }
 
-size_t Stock::size() {
+size_t Stock::size() 
+{
     return open.size();
 }
+
