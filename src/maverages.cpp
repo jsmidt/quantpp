@@ -10,6 +10,7 @@
 #include <iostream>
 #include <boost/numeric/ublas/vector.hpp>
 #include <boost/numeric/ublas/vector_proxy.hpp>
+//#include <boost/python.hpp>
 using namespace boost::numeric;
 
 
@@ -34,5 +35,11 @@ void cma(ublas::vector<double> v, ublas::vector<double> &w)
 }
 
 
+//BOOST_PYTHON_MODULE(sma_ext)
+//{
+ //       using namespace boost::python;
+//            def("sma", sma);
+//            def("cma", cma);
+///}
 
 
