@@ -33,6 +33,22 @@ void cma(ublas::vector<double> v, ublas::vector<double> &w)
     }
 }
 
-
+// Exponential moving average.
+// a= 2/(N+1). N=19 gives a=0.1
+void ema(ublas::vector<double> v, ublass::vector<double> &w, float N)
+{
+    for (size_t i = 9; i < v.size(); i++) {
+        //wrote if statement this way so that it won't have to skip over first
+        //case everytime. If there is a faster way let me know
+        if (i > 9) {
+            w(i) = w(i-1) + 2/(N+1)*(v(i) - w(i-1))
+        }
+        else 
+            // For first value take the 10 day average
+            ublas::vector_range<ublas::vector<double> > 
+                   vr(v,ublas::range(0, 10));
+            w(i) = sum(vr)/vr.size();
+    }
+}
 
 
