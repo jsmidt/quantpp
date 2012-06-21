@@ -15,7 +15,7 @@ using namespace boost::numeric;
 
 void sma(ublas::vector<double>, ublas::vector<double>&, size_t);
 void cma(ublas::vector<double>, ublas::vector<double>&);
-void ema(ublas::vector<double>, ublas::vector<double>&, float);
+void ema(ublas::vector<double>, ublas::vector<double>&, int);
 
 
 #endif /* __MAVERAGES_HPP_ */
